@@ -1,0 +1,53 @@
+mlee222
+week 2 home
+
+#include <stdio.h>
+double Tamount;
+const double GST=1.13;
+double aftertax;
+
+int loonies;
+int quarters;
+int dimes;
+int nickles;
+int pennies;
+
+double resultl;
+double resultq;
+double resultd;
+double resultn;
+double resultp;
+
+
+int main(){
+
+    printf("\nPlease enter the amount to be paid: $ ");
+   
+    scanf("%lf",&Tamount);
+    
+    aftertax = Tamount*1.13;
+    
+    printf("\nBalance owing: $ %.2lf", aftertax);
+    
+    loonies = aftertax / 1;
+    resultl = aftertax - loonies;
+    printf("\nLoonies required: %d, balance owing $ %.2lf", loonies, resultl);
+    
+    quarters = resultl / 0.25;
+    resultq = resultl - (0.25*quarters);
+    
+    printf("\nQuarters required: %d, balance owing $ %.2lf", quarters, resultq);
+    dimes = resultq / 0.10;
+    resultd = resultq - (0.10*dimes);
+    
+    printf("\nDimes required: %d, balance owing $ %.2lf", dimes, resultd);
+    nickles = resultd / 0.05;
+    resultn = resultd - (0.05*nickles);
+    
+    printf("\nNickles required: %d, balance owing $ %.2lf", nickles, resultn);
+    pennies = resultn / 0.01;
+    resultp = resultn - (0.01*pennies);
+    printf("\nPennies required: %d, balance owing $ %.2lf", pennies, resultp);
+    
+    return 0;
+}
