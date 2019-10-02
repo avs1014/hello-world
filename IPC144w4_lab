@@ -1,0 +1,40 @@
+mlee222
+week 4 lab
+
+#include <stdio.h>
+
+int main()
+{
+    int days = 0;
+    int nday;
+    
+    
+    printf("\n---=== IPC Temperature Calculator V2.0 ===---");
+    
+    printf("\nPlease enter the number of days, between 3 and 10, inclusive: ");
+    while (days<3 || days>10){ // while used for false statement
+        scanf("%d", &days);
+        if ( days >= 3 && days <= 10 ){ // to show true statement
+            break; // to get out from while statement to get to true entry
+        }else{
+            printf("\nInvalid entry, please enter a number between 3 and 10, inclusive: ");    
+        }
+    }
+    int high[days]; // in order to allow numbers of days to be used in for formula
+    int low[days];
+    printf("\n");
+    for (nday = 0; nday < days; nday++ ){ //ndays(index seq) = input from user, days = are retrieved from top
+        printf("Day %d - High: ", nday+1);  
+        scanf("%d", &high[nday]);
+        printf("Day %d - Low: ", nday+1);
+        scanf("%d", &low[nday]);
+    }
+    printf("\n");
+    printf("Day\t Hi\t Low");
+    for (nday = 0; nday < days; nday++){ // parallel array values
+        
+        printf("\n %d\t %d\t %d\t", nday+1 , high[nday], low[nday]);
+    
+    }
+    return 0;
+}
