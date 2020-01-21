@@ -1,0 +1,59 @@
+//==============================================
+// Name:           Lee, Michael Jae-Min
+
+// Workshop:       2 (at-home)
+//==============================================
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+
+double Tamount;
+const double GST = 1.13; // constant value of tax 13%
+double aftertax;
+
+int loonies; 
+int quarters;
+int dimes;
+int nickels;
+int pennies;
+
+double resultl; // represents result balance after loonies calculation
+double resultq; // represents result balance after quarter calculation
+double resultd; // represents result balance after dimes calculation
+double resultn; // represents result balance after nickels calculation
+double resultp; // represents result balance after penny calculation 
+ // each calculation below takes in specific order .....
+
+int main() {
+
+    printf("Please enter the amount to be paid: $");
+
+    scanf("%lf", &Tamount); // prompt user to enter intial amount to be calculate 
+    aftertax = (Tamount * 1.13) + 0.005;   // in order to fix the round up issue at penny.
+    printf("GST: 1.13");
+    printf("\nBalance owing: $%.2lf", aftertax);
+
+    loonies = aftertax / 1; 
+    resultl = aftertax - loonies;
+    printf("\nLoonies required: %d, balance owing $%.2lf", loonies, resultl);
+
+    quarters = resultl / 0.25;
+    resultq = resultl - (0.25 * quarters);
+
+    printf("\nQuarters required: %d, balance owing $%.2lf", quarters, resultq);
+    dimes = resultq / 0.10;
+    resultd = resultq - (0.10 * dimes);
+
+    printf("\nDimes required: %d, balance owing $%.2lf", dimes, resultd);
+    nickels = resultd / 0.05;
+    resultn = resultd - (0.05 * nickels);
+
+    printf("\nNickels required: %d, balance owing $%.2lf", nickels, resultn);
+    
+    pennies = resultn / 0.01;
+    resultp = resultn - (0.01 * pennies);
+    printf("\nPennies required: %d, balance owing $%.2lf\n", pennies, resultp);
+
+    return 0;
+}
