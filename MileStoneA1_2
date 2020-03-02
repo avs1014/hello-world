@@ -1,0 +1,205 @@
+//==============================================
+// Name:           Michael Lee
+// Student Number: 133617183
+// Email:          mlee222@myseneca.ca
+// Section:        NKK
+// Date:
+//==============================================
+// Assignment:     1
+// Milestone:      2
+//==============================================
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+// This source file needs to "know about" the structures you declared
+// in the header file before referring to those new types:
+// HINT: put the header file name in double quotes so the compiler knows
+//       to look for it in the same directory/folder as this source file
+// #include your contacts header file on the next line:
+
+
+struct Name
+{
+    char firstName[31];
+    char middleInitial[7];
+    char lastName[36];
+};
+
+// Structure type Address declaration
+// Place your code here...
+struct Address
+{
+    int streetNumber;
+    char street[41];
+    int apartmentNumber;
+    char postalCode[8];
+    char city[41];
+};
+
+// Structure type Numbers declaration
+// Place your code here...
+struct Numbers
+{
+    char cell[11];
+    char home[11];
+    char business[11];
+};
+
+int main(void)
+{
+    // Declare variables here:
+    struct Name iName;
+    struct Address iAddress;
+    struct Numbers iNumbers;
+    char option;
+
+
+    // Display the title
+    printf("Contact Management System\n");
+    printf("-------------------------\n");
+
+    
+    // Contact Name Input:
+    printf("Please enter the contact's first name: ");
+    scanf("%s", iName.firstName);
+    printf("Do you want to enter a middle initial(s)? (y or n): ");
+    do
+    {
+        scanf("%c", &option);
+    } while (option == '\n');
+    if (option != 'n')
+    {
+        char c = getchar();
+        printf("Please enter the contact's middle initial(s): ");
+        scanf("%[^\n]", iName.middleInitial);
+    }
+    getchar();
+    printf("Please enter the contact's last name: ");
+    scanf("%[^\n]", iName.lastName);        // Contact Address Input:
+    printf("Please enter the contact's street number: ");
+    scanf("%d", &iAddress.streetNumber);
+    getchar();
+    printf("Please enter the contact's street name: ");
+    scanf("%[^\n]", iAddress.street);
+    printf("Do you want to enter an appartment number? (y or n): ");
+    do
+    {
+        scanf("%c", &option);
+    } while (option == '\n');
+    if (option != 'n')
+    {
+        printf("Please enter the contact's appartment number: ");
+        scanf("%d", &iAddress.apartmentNumber);
+    }
+    printf("Please enter the contact's postal code: ");
+    fgets(iAddress.postalCode, sizeof(iAddress.postalCode), stdin); //to deal with \n from before
+    fgets(iAddress.postalCode, sizeof(iAddress.postalCode), stdin);
+    getchar();
+    printf("Please enter the contact's city: ");
+    scanf("%[^\n]", iAddress.city);
+
+
+
+    // Contact Numbers Input:
+    printf("Do you want to enter a cell phone number? (y or n): ");
+    do
+    {
+        scanf("%c", &option);
+    } while (option == '\n');
+    if (option != 'n')
+    {
+        printf("Please enter the contact's cell phone number: ");
+        scanf("%s", iNumbers.cell);
+    };
+    printf("Do you want to enter a home phone number? (y or n): ");
+    do
+    {
+        scanf("%c", &option);
+    } while (option == '\n');
+    if (option != 'n')
+    {
+        printf("Please enter the contact's home phone number: ");
+        scanf("%s", iNumbers.home);
+    };
+    printf("Do you want to enter a business phone number? (y or n): ");
+    do
+    {
+        scanf("%c", &option);
+    } while (option == '\n');
+    if (option != 'n')
+    {
+        printf("Please enter the contact's business phone number: ");
+        scanf("%s", iNumbers.business);
+    };
+
+
+
+    // Display Contact Summary Details
+    printf("\n");
+    printf("Contact Details\n");
+    printf("---------------\n");
+    printf("Name Details\n");
+    printf("First name: %s\n", iName.firstName);
+    printf("Middle initial(s): %s\n", iName.middleInitial);
+    printf("Last name: %s\n\n", iName.lastName);
+    printf("Address Details\n");
+    printf("Street number: %d\n", iAddress.streetNumber);
+    printf("Street name: %s\n", iAddress.street);
+    printf("Apartment: %d\n", iAddress.apartmentNumber);
+    printf("Postal code: %s\n", iAddress.postalCode);
+    printf("City: %s\n\n", iAddress.city);
+    printf("Phone Numbers:\n");
+    printf("Cell phone number: %s\n", iNumbers.cell);
+    printf("Home phone number: %s\n", iNumbers.home);
+    printf("Business phone number: %s\n\n", iNumbers.business);
+
+
+
+    // Display Completion Message
+    printf("Structure test for Name, Address, and Numbers Done!\n");
+
+
+
+    return 0;
+}
+
+/*  SAMPLE OUTPUT:
+
+    Contact Management System
+    -------------------------
+    Please enter the contact's first name: Tom
+    Do you want to enter a middle initial(s)? (y or n): y
+    Please enter the contact's middle initial(s): L. A.
+    Please enter the contact's last name: Wong Song
+    Please enter the contact's street number: 20
+    Please enter the contact's street name: Keele Street
+    Do you want to enter an apartment number? (y or n): y
+    Please enter the contact's apartment number: 40
+    Please enter the contact's postal code: A8A 4J4
+    Please enter the contact's city: North York
+    Do you want to enter a cell phone number? (y or n): Y
+    Please enter the contact's cell phone number: 9051116666
+    Do you want to enter a home phone number? (y or n): Y
+    Please enter the contact's home phone number: 7052227777
+    Do you want to enter a business phone number? (y or n): Y
+    Please enter the contact's business phone number: 4163338888
+    Contact Details
+    ---------------
+    Name Details:
+    First name: Tom
+    Middle initial(s): L. A.
+    Last name: Wong Song
+    Address Details:
+    Street number: 20
+    Street name: Keele Street
+    Apartment: 40
+    Postal code: A8A 4J4
+    City: North York
+    Phone Numbers:
+    Cell phone number: 9051116666
+    Home phone number: 7052227777
+    Business phone number: 4163338888
+    Structure test for Name, Address, and Numbers Done!
+*/
